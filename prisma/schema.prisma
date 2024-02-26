@@ -15,15 +15,24 @@ datasource db {
 }
 
 model Post {
-    id        Int      @id @default(autoincrement())
-    name      String
+    id         String      @id @default(cuid())
+    title      String
+    prompt     String
+    desc       String
+    source     String?
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-
+    category    Category[]
     createdBy   User   @relation(fields: [createdById], references: [id])
     createdById String
 
-    @@index([name])
+    @@index([title])
+}
+
+model Category {
+    id    Int    @id @default(autoincrement())
+    name  String
+    posts Post[]
 }
 
 // Necessary for Next auth
@@ -71,3 +80,6 @@ model VerificationToken {
 
     @@unique([identifier, token])
 }
+
+
+
