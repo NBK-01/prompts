@@ -1,57 +1,89 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/non-nullable-type-assertion-style */
+/* eslint-disable @typescript-eslint/unbound-method */
+
+"use client"
 import { unstable_noStore as noStore } from "next/cache";
-import Link from "next/link";
+import { api } from "~/trpc/react";
+import PromptCard from "./_components/comps/prompt-card";
+import { SideBar } from "./_components/comps/sidebar";
+import { useSearchParams } from "next/navigation";
 
-import { CreatePost } from "~/app/_components/create-post";
-import { getServerAuthSession } from "~/server/auth";
-import { api } from "~/trpc/server";
-
-export default async function Home() {
+export default function Home() {
   noStore();
-  const hello = await api.post.hello.query({ text: "from tRPC" });
-  const session = await getServerAuthSession();
+  const searchParams = useSearchParams()
+  const param = searchParams.get('category')
+ 
+  function getData() {
+      if (param === null){
+        const res = api.post.getAll.useQuery()
 
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-center text-neutral-600">
+        return res
+      }
+      else {
+        const res = api.post.getLatest.useQuery(param)
+
+        return res
+      }
+
      
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2x">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p>
-
-          <div className="flex flex-col items-center justify-center gap-4">
-            <p className="text-center text-2xl">
-              {session && <span>Logged in as {session.user?.name}</span>}
-            </p>
-            <Link
-              href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-            >
-              {session ? "Sign out" : "Sign in"}
-            </Link>
-          </div>
+  }
+  const res = getData()
+  const posts = res.data
+  console.log(posts?.length)
+  
+if (posts?.length === 0){
+  return (
+    <>
+      <SideBar  />
+      <main className="flex min-h-screen flex-col items-center justify-center text-neutral-600">
+     
+        <div className="grid grid-cols-3 gap-8">
+            Nothing to see here yet
         </div>
-
-        <CrudShowcase />
-     
-    </main>
+    
+      </main>
+    </>
   );
 }
-
-async function CrudShowcase() {
-  const session = await getServerAuthSession();
-  if (!session?.user) return null;
-
-  const latestPost = await api.post.getLatest.query();
-
+else {
   return (
-    <div className="w-full max-w-xs">
-      {latestPost ? (
-        <p className="truncate">Your most recent post: {latestPost.name}</p>
-      ) : (
-        <p>You have no posts yet.</p>
-      )}
+    <>
+      
 
-      <CreatePost />
-    </div>
+      <main className="lg:grid xl:grid-cols-[210px_1fr] lg:grid-cols-[120px_1fr] flex mx-auto justify-center">
+      <SideBar />
+        <div className="grid  xl:grid-cols-3 sm:grid-cols-2  gap-8 pt-32 mx-auto">
+          {posts?.map((post) => (
+            <PromptCard title={post.title} desc={post.desc} category={post.category} id={post.id} authorImage={post.createdBy.image as string} authorName={post.createdBy.name as string} prompt={post.prompt} key={post.id}/>
+          ))}
+          </div>
+    
+        
+    
+      </main>
+    </>
   );
 }
+}
+
+// async function CrudShowcase() {
+//   const session = await getServerAuthSession();
+//   if (!session?.user) return null;
+
+//   const latestPost = await api.post.getLatest.query();
+
+//   return (
+//     <div className="w-full max-w-xl">
+//       {latestPost ? (
+//         <><p className="truncate">Your most recent post: {latestPost.title}</p><p> {latestPost.category[0]?.name} </p></>
+//       ) : (
+//         <p>You have no posts yet.</p>
+//       )}
+//       <CreatePost />
+//     </div>
+//   );
+// }
