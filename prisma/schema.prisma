@@ -22,18 +22,21 @@ model Post {
     source     String?
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
-    category    Category[]
+    // categories    Category[]
+    category       String
     createdBy   User   @relation(fields: [createdById], references: [id])
     createdById String
 
     @@index([title])
 }
 
-model Category {
-    id    Int    @id @default(autoincrement())
-    name  String
-    posts Post[]
-}
+// model Category {
+//     id    String @id @default(cuid())
+//     name  String
+//     posts Post[]
+
+
+// }
 
 // Necessary for Next auth
 model Account {
