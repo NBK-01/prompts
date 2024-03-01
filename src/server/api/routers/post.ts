@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { z } from "zod";
 
 import {
@@ -15,25 +16,48 @@ export const postRouter = createTRPCRouter({
       };
     }),
 
-  create: protectedProcedure
-    .input(z.object({ name: z.string().min(1) }))
-    .mutation(async ({ ctx, input }) => {
-      // simulate a slow db call
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
+    post: protectedProcedure
+    .input(z.object({title: z.string(), desc: z.string(), prompt: z.string(), category: z.string()}))
+    .mutation(({ctx, input}) => {
       return ctx.db.post.create({
         data: {
-          name: input.name,
-          createdBy: { connect: { id: ctx.session.user.id } },
-        },
-      });
+          title: input.title,
+          prompt: input.prompt,
+          desc: input.desc,
+          createdById:  ctx.session.user.id,
+          category: input.category,
+        }
+      })
     }),
 
-  getLatest: protectedProcedure.query(({ ctx }) => {
-    return ctx.db.post.findFirst({
+  getLatest: publicProcedure
+  .input(z.string())
+  .query(({ ctx, input }) => {
+    return ctx.db.post.findMany({
       orderBy: { createdAt: "desc" },
-      where: { createdBy: { id: ctx.session.user.id } },
+      where: { category: input },
+      include: {
+        createdBy: true
+      }
     });
+  }),
+
+  getAll: publicProcedure
+  .query(({ ctx }) => {
+    return ctx.db.post.findMany({
+      orderBy: {createdAt: "desc"},
+      include: {
+        createdBy: true
+      }
+    })
+  }),
+
+  getCount: publicProcedure
+  .input(z.string())
+  .query(({ctx, input}) => {
+    return ctx.db.post.findMany({
+      where: {category: input},
+    })
   }),
 
   getSecretMessage: protectedProcedure.query(() => {
