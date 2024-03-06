@@ -17,6 +17,7 @@ export const metadata = {
   title: "Prompts | By Nayef",
   description: "Explore the best prompts used by the community to get the best experience using GPT.",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
+  url: "https://prompts.nayef.dev/"
 };
 
 export default function RootLayout({

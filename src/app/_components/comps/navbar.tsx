@@ -12,7 +12,7 @@ export async function  Nav() {
         <div className="flex justify-between max-w-screen-2xl px-10 pt-12">
             <Link className="flex space-x-3" href="/">
              
-                <Image src="/black-logo.png" width={50} height={50} alt=""/>
+                <Image src="/black-logo.png" width={50} height={50} alt="prbly-logo" priority={true}/>
                 <h1 className="my-auto text-lg"> Prompts </h1>
               
             </Link>
