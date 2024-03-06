@@ -61,10 +61,10 @@ export function MobileNav() {
                 <Badge className="ml-auto flex h-4 w-4 shrink-0 items-center justify-center bg-[#18c37d] hover:bg-[#18c37d]"> . </Badge>
               </Link>
               <Link
-                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50", searchParams.get('category') === "coding" ? "bg-neutral-100" : "bg-transparent")}
+                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50", searchParams.get('category') === "Coding" ? "bg-neutral-100" : "bg-transparent")}
                 href={
                   // <pathname>?sort=desc
-                  path + '?' + createQueryString('category', 'coding')
+                  path + '?' + createQueryString('category', 'Coding')
                 }
               >
                 <CodeIcon className="h-[14px] w-[14px]"/>
@@ -72,10 +72,10 @@ export function MobileNav() {
                 <Badge className="ml-auto flex h-4 w-4 shrink-0 items-center justify-center bg-[#18c37d] hover:bg-[#18c37d]"> . </Badge>
               </Link>
               <Link
-                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50", searchParams.get('category') === "writing" ? "bg-neutral-100" : "bg-transparent")}
+                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50", searchParams.get('category') === "Writing" ? "bg-neutral-100" : "bg-transparent")}
                 href={
                   // <pathname>?sort=desc
-                  path + '?' + createQueryString('category', 'writing')
+                  path + '?' + createQueryString('category', 'Writing')
                 }
               >
                 <Pencil1Icon className="h-[14px] w-[14px]"/>
@@ -83,10 +83,10 @@ export function MobileNav() {
                 <Badge className="ml-auto flex h-4 w-4 shrink-0 items-center justify-center bg-[#18c37d] hover:bg-[#18c37d]"> . </Badge>
               </Link>
               <Link
-                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50", searchParams.get('category') === "design" ? "bg-neutral-100" : "bg-transparent")}
+                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50", searchParams.get('category') === "Design" ? "bg-neutral-100" : "bg-transparent")}
                 href={
                   // <pathname>?sort=desc
-                  path + '?' + createQueryString('category', 'design')
+                  path + '?' + createQueryString('category', 'Design')
                 }
               >
                 <PaintBucketIcon className="h-[14px] w-[14px]"/>
@@ -94,10 +94,10 @@ export function MobileNav() {
                 <Badge className="ml-auto flex h-4 w-4 shrink-0 items-center justify-center bg-[#18c37d] hover:bg-[#18c37d]">.</Badge>
               </Link>
               <Link
-                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50",searchParams.get('category') === "business" ? "bg-neutral-100" : "bg-transparent")}
+                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50",searchParams.get('category') === "Business" ? "bg-neutral-100" : "bg-transparent")}
                 href={
                   // <pathname>?sort=desc
-                  path + '?' + createQueryString('category', 'business')
+                  path + '?' + createQueryString('category', 'Business')
                 }
               >
                 <Briefcase className="h-[14px] w-[14px]"/>
@@ -108,10 +108,10 @@ export function MobileNav() {
              
              
               <Link
-                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50",searchParams.get('category') === "research" ? "bg-neutral-100" : "bg-transparent")}
+                className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50",searchParams.get('category') === "Research" ? "bg-neutral-100" : "bg-transparent")}
                 href={
                   // <pathname>?sort=desc
-                  path + '?' + createQueryString('category', 'research')
+                  path + '?' + createQueryString('category', 'Research')
                 }
               >
                 <MagnifyingGlassIcon className="h-[14px] w-[14px]"/>

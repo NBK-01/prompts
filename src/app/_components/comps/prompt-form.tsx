@@ -3,14 +3,6 @@
 
 import * as React from "react"
 import { Button } from "~/app/_components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "~/app/_components/ui/card"
 import { Input } from "~/app/_components/ui/input"
 import { Label } from "~/app/_components/ui/label"
 import {
@@ -33,9 +25,10 @@ import { Textarea } from "../ui/textarea"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
-import { CheckCircle2, CircleDashed, CodeIcon, Globe2Icon, Pencil } from "lucide-react"
+import { Briefcase, CheckCircle2, CircleDashed, CodeIcon, Globe2Icon, PaintBucket, Pencil } from "lucide-react"
 import { api } from "~/trpc/react"
 import { useRouter } from "next/navigation";
+import { MagnifyingGlassIcon } from "@radix-ui/react-icons"
 
  
 const formSchema = z.object({
@@ -126,13 +119,22 @@ export function PromptForm() {
                         </FormControl>
                         <SelectContent position="popper">
                             <SelectItem className="flex flex-row" value="any"> 
-                                <div className='flex'> Any </div>
+                              <div className='flex'> Any </div>
                             </SelectItem>
-                            <SelectItem value="coding" textValue="Coding"> 
-                                <div className='flex'> <CodeIcon className="h-4 w-4 my-auto mr-2"/> Coding </div> 
+                            <SelectItem value="Coding" textValue="Coding"> 
+                              <div className='flex'> <CodeIcon className="h-4 w-4 my-auto mr-2"/> Coding </div> 
                             </SelectItem>
-                            <SelectItem value="writing">
-                            <div className='flex'> <Pencil className="h-4 w-4 my-auto mr-2"/> Writing </div> 
+                            <SelectItem value="Writing">
+                              <div className='flex'> <Pencil className="h-4 w-4 my-auto mr-2"/> Writing </div> 
+                            </SelectItem>
+                            <SelectItem value="Design">
+                              <div className='flex'> <PaintBucket className="h-4 w-4 my-auto mr-2"/> Design </div> 
+                            </SelectItem>
+                            <SelectItem value="Business">
+                              <div className='flex'> <Briefcase className="h-4 w-4 my-auto mr-2"/> Business </div> 
+                            </SelectItem>
+                            <SelectItem value="Research">
+                              <div className='flex'> <MagnifyingGlassIcon className="h-4 w-4 my-auto mr-2"/> Research </div> 
                             </SelectItem>
                         </SelectContent>
                    
@@ -154,15 +156,15 @@ export function PromptForm() {
                 name="prompt"
                 render={({ field }) => (
                     <FormItem>
-                    <FormLabel>Description</FormLabel>
-                    <FormControl>
-                    <Textarea id="name" className="resize-none h-[180px]" placeholder="Name of your project" {...field} />
-                    </FormControl>
-                    
-                    <FormMessage />
+                      <FormLabel>Description</FormLabel>
+                      <FormControl>
+                        <Textarea id="name" className="resize-none h-[180px]" placeholder="Name of your project" {...field} />
+                      </FormControl>
+                      
+                      <FormMessage />
                     </FormItem>
-          )}
-        />
+              )}
+            />
             </div>
           </div>
 
