@@ -6,6 +6,7 @@ import {Nav} from "./_components/comps/navbar";
 import { SideBar } from "./_components/comps/sidebar";
 import { Suspense } from "react";
 import {Toaster} from "sonner"
+import { MobileNav } from "./_components/comps/mobileNav";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -31,7 +32,9 @@ export default function RootLayout({
 
         <div className="">
                 <Nav/>
-                
+                <div className="w-screen flex mx-auto justify-center">
+                  <MobileNav/>
+                </div>
                 <Suspense>
                   {children}
                 </Suspense>

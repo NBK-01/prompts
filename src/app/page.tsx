@@ -20,12 +20,10 @@ export default function Home() {
   function getData() {
       if (param === null){
         const res = api.post.getAll.useQuery()
-
         return res
       }
       else {
         const res = api.post.getLatest.useQuery(param)
-
         return res
       }
 
@@ -33,7 +31,6 @@ export default function Home() {
   }
   const res = getData()
   const posts = res.data
-  console.log(posts?.length)
   
 if (posts?.length === 0){
   return (
@@ -52,18 +49,13 @@ if (posts?.length === 0){
 else {
   return (
     <>
-      
-
-      <main className="lg:grid xl:grid-cols-[210px_1fr] lg:grid-cols-[120px_1fr] flex mx-auto justify-center">
+      <main className="lg:grid xl:grid-cols-[200px_1fr] lg:grid-cols-[120px_1fr] flex mx-auto justify-center">
       <SideBar />
-        <div className="grid  xl:grid-cols-3 sm:grid-cols-2  gap-8 pt-32 mx-auto">
+        <div className="grid  xl:grid-cols-3 sm:grid-cols-2 gap-10 lg:pt-32 pt-8 mx-auto">
           {posts?.map((post) => (
             <PromptCard title={post.title} desc={post.desc} category={post.category} id={post.id} authorImage={post.createdBy.image as string} authorName={post.createdBy.name as string} prompt={post.prompt} key={post.id}/>
           ))}
           </div>
-    
-        
-    
       </main>
     </>
   );

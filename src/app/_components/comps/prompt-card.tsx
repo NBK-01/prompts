@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call */
 "use client"
+
 import React from 'react'
 import { Badge } from '../ui/badge'
 import { ScrollArea } from "~/app/_components/ui/scroll-area"
@@ -26,14 +26,14 @@ const PromptCard = ({prompt, title, authorName, authorImage, desc, category}: Pr
         }
 
   return (
-    <div className="max-w-[350px] border border-neutral-400 rounded-sm"> 
+    <div className="max-w-[320px] border border-neutral-400 rounded-sm"> 
         <div className='flex flex-col px-8 py-8'>
             <div className="flex justify-between w-full">
                 <h1> {title} </h1>
                 <Badge className="rounded-none bg-[#18c37d]"> {category} </Badge>
             </div>
             <p className="text-sm text-neutral-500 mt-3"> {desc} </p>
-            <ScrollArea className="xl:h-[200px] xl:w-[300px] h-[220px] w-[250px] rounded-md border p-4 mt-4">
+            <ScrollArea className="h-[200px] w-[250px] rounded-md border p-4 mt-4">
                 <p style={tech.style}> {prompt} </p>
             </ScrollArea>
             <div className="mt-4 flex justify-between">

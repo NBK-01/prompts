@@ -8,7 +8,7 @@ import Link from 'next/link'
 export async function  Nav() {
   const session = await getServerAuthSession()
   return (
-    <header className="fixed w-full bg-background z-50 mb-10">
+    <header className="md:fixed lg:block hidden w-full bg-background z-50 mb-10">
         <div className="flex justify-between max-w-screen-2xl px-10 pt-12">
             <Link className="flex space-x-3" href="/">
              
