@@ -108,14 +108,14 @@ export function SideBar(amount: any) {
             <nav className="grid items-start px-4 text-sm font-normal space-y-4 pb-10">
             <Link
                 className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50")}
-                href="/"
+                href="https://github.com/NBK-01/prompts.nayef.dev/issues/new?assignees=&labels=enhancement&projects=&template=category-suggestions.md&title="
               >
                 <ExternalLinkIcon className="h-[14px] w-[14px]"/>
                 Feature requests
               </Link>
               <Link
                 className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50")}
-                href="/"
+                href="https://github.com/NBK-01/prompts.nayef.dev/issues/new?assignees=&labels=enhancement&projects=&template=category-suggestions.md&title="
               >
                 <ExternalLinkIcon className="h-[14px] w-[14px]"/>
                 Category Suggestions
@@ -134,46 +134,3 @@ interface UserDetails {
   email?: string,
   id?: string
 }
-
-// export function UserAvatar({initials, image, name, email, id}: UserDetails) {
-//   return (
-//       <>
-//       <DropdownMenu>
-//       <DropdownMenuTrigger asChild>
-//         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-//           <Avatar className="h-8 w-8 outline outline-prblyPrimary">
-//             <AvatarImage src={image} alt={name} />
-//             <AvatarFallback> {initials} </AvatarFallback>
-//           </Avatar>
-//         </Button>
-//       </DropdownMenuTrigger>
-//       <DropdownMenuContent className="w-56 mt-2" align="end" forceMount>
-//         <DropdownMenuLabel className="font-normal">
-//           <div className="flex flex-col space-y-1">
-//             <p className="text-sm font-medium leading-none"> {name} </p>
-//             <p className="text-xs leading-none text-muted-foreground">
-//               {email}
-//             </p>
-//           </div>
-//         </DropdownMenuLabel>
-//         <DropdownMenuSeparator />
-//         <DropdownMenuGroup>
-//           <DropdownMenuItem>
-//             Profile
-//             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-//           </DropdownMenuItem>
-         
-//           <Link href="/">   
-//             <DropdownMenuItem className="cursor-pointer"> Back to home  </DropdownMenuItem> 
-//           </Link>
-//         </DropdownMenuGroup>
-//         <DropdownMenuSeparator />
-//         <DropdownMenuItem className="cursor-pointer" onClick={() => signOut()} >
-//           Log out 
-//           <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-//         </DropdownMenuItem>
-//       </DropdownMenuContent>
-//     </DropdownMenu>
-//       </>
-//   )
-// }

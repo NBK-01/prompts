@@ -124,14 +124,14 @@ export function MobileNav() {
             <nav className="grid items-start px-4 text-sm font-normal space-y-4 pb-10">
             <Link
                 className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50")}
-                href="/dashboard/profile"
+                href="https://github.com/NBK-01/prompts.nayef.dev/issues/new?assignees=&labels=enhancement&projects=&template=category-suggestions.md&title="
               >
                 <ExternalLinkIcon className="h-[14px] w-[14px]"/>
                 Feature requests
               </Link>
               <Link
                 className={cn("flex items-center gap-3 rounded-lg px-3 py-2 text-neutral-500 transition-all hover:bg-neutral-200/80 dark:text-neutral-400 dark:hover:text-neutral-50")}
-                href="/dashboard/profile"
+                href="https://github.com/NBK-01/prompts.nayef.dev/issues/new?assignees=&labels=enhancement&projects=&template=category-suggestions.md&title="
               >
                 <ExternalLinkIcon className="h-[14px] w-[14px]"/>
                 Category Suggestions
