@@ -71,7 +71,7 @@ export function PromptForm() {
                     <FormItem>
                     <FormLabel>Title</FormLabel>
                     <FormControl>
-                        <Input placeholder="Name of your project"  {...field}/>
+                        <Input placeholder="Product list in VueJs"  {...field}/>
                     </FormControl>
                     <FormDescription>
                         What your prompt is
@@ -90,7 +90,7 @@ export function PromptForm() {
                     <FormItem>
                     <FormLabel>Description</FormLabel>
                     <FormControl>
-                        <Input placeholder="Output twenty linked-lists in reverse"  {...field}/>
+                        <Input placeholder="Fetches data from API and displays 15 products with loading state and animations"  {...field}/>
                     </FormControl>
                     <FormDescription>
                         Short description about what your prompt does
@@ -156,9 +156,9 @@ export function PromptForm() {
                 name="prompt"
                 render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Description</FormLabel>
+                      <FormLabel> Prompt </FormLabel>
                       <FormControl>
-                        <Textarea id="name" className="resize-none h-[180px]" placeholder="Name of your project" {...field} />
+                        <Textarea id="name" className="resize-none h-[180px]" placeholder="" {...field} />
                       </FormControl>
                       
                       <FormMessage />

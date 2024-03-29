@@ -28,9 +28,10 @@ const PromptCard = ({prompt, title, authorName, authorImage, desc, category}: Pr
   return (
     <div className="max-w-[320px] border border-neutral-400 rounded-sm"> 
         <div className='flex flex-col px-8 py-8'>
-            <div className="flex justify-between w-full">
+            <div className="flex flex-col justify-between w-full">
+                <Badge className="rounded-none w-[80px] bg-[#18c37d]"> {category} </Badge>
                 <h1> {title} </h1>
-                <Badge className="rounded-none bg-[#18c37d]"> {category} </Badge>
+
             </div>
             <p className="text-sm text-neutral-500 mt-3"> {desc} </p>
             <ScrollArea className="h-[200px] w-[250px] rounded-md border p-4 mt-4">
