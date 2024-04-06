@@ -36,12 +36,12 @@ import {
 
       <Body style={main}>
         <Container style={container}>
-        <Link href="https://prbly.xyz">
+        <Link href="https://prompts.nayef.dev">
           <Img
             src={promptsIcon}
             width={58}
             height={58}
-            alt="Probably"
+            alt="Prompts"
           />
           </Link>
           <Heading style={heading}> Your login link</Heading>

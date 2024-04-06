@@ -23,7 +23,7 @@ export const SingOut = () => {
 
 export const SigninLarge = () => {
   return (
-    <Button size="lg" onClick={() => signIn("github")}> Login </Button>
+    <Button size="lg" onClick={() => signIn()}> Login </Button>
   )
 }
 
