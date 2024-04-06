@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-floating-promises */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import {
   getServerSession,
@@ -6,8 +9,11 @@ import {
 } from "next-auth";
 import { type Adapter } from "next-auth/adapters";
 import GithubProvider from "next-auth/providers/github"
+import EmailProvider  from "next-auth/providers/email";
 import { env } from "~/env";
 import { db } from "~/server/db";
+import { sendEmail } from "~/lib/emails";
+import LoginEmail from "~/lib/emails/magicLink";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -51,6 +57,32 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GITHUB_CLIENT_ID,
       clientSecret: env.GITHUB_CLIENT_SECRET,
     }),
+
+    EmailProvider({
+      server: {
+        host: env.SMTP_HOST,
+        // eslint-disable-next-line @typescript-eslint/non-nullable-type-assertion-style
+        port: parseInt(process.env.SMTP_PORT as string, 10),
+        secureConnection: true,
+        auth: {
+          user: env.SMTP_USER,
+          pass: env.SMTP_PASSWORD,
+        },
+      },
+      from: env.EMAIL_FROM,
+      sendVerificationRequest({ identifier, url }) {
+        if (process.env.NODE_ENV === "development") {
+          console.log(`Login link: ${url}`);
+          return;
+        } else {
+          sendEmail({
+            email: identifier,
+            subject: `Magic Link`,
+            react: LoginEmail({ magicLink: url, email: identifier }),
+          });
+        }
+      },
+    })
     /**
      * ...add more providers here.
      *
@@ -61,6 +93,10 @@ export const authOptions: NextAuthOptions = {
      * @see https://next-auth.js.org/providers/github
      */
   ],
+
+  pages: {
+    signIn: "/auth"
+  },
 };
 
 /**
