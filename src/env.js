@@ -36,6 +36,8 @@ export const env = createEnv({
     SMTP_PORT: z.number(),
     EMAIL_FROM: z.string(),
     SUPA_ICON: z.string(),
+    POSTGRES_PRISMA_URL: z.string(),
+    POSTGRES_URL_NON_POOLING: z.string(),
   },
 
   /**
@@ -64,6 +66,8 @@ export const env = createEnv({
     SMTP_PORT: Number(process.env.SMTP_PORT),
     EMAIL_FROM: process.env.EMAIL_FROM,
     SUPA_ICON: process.env.SUPA_ICON,
+    POSTGRES_URL_NON_POOLING: process.env.POSTGRES_URL_NON_POOLING,
+    POSTGRES_PRISMA_URL: process.env.POSTGRES_PRISMA_URL
   },
   /**
    * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation. This is especially
