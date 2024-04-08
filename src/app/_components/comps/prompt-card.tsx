@@ -39,7 +39,8 @@ const PromptCard = ({prompt, title, authorName, authorImage, desc, category}: Pr
             </ScrollArea>
             <div className="mt-4 flex justify-between">
                 <Button size="sm" variant="outline" onClick={() => copyFunc()}> <ClipboardCopyIcon className="mr-2"/> Copy </Button>
-                <AnimatedTooltipSmall author={authorName} image={authorImage} />
+                
+               {authorImage ?  <AnimatedTooltipSmall author={authorName} image={authorImage} /> : <span> . </span>}
             </div>
         </div>
     </div>

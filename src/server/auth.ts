@@ -71,16 +71,16 @@ export const authOptions: NextAuthOptions = {
       },
       from: env.EMAIL_FROM,
       sendVerificationRequest({ identifier, url }) {
-        if (process.env.NODE_ENV === "development") {
-          console.log(`Login link: ${url}`);
-          return;
-        } else {
+        // if (process.env.NODE_ENV === "development") {
+        //   console.log(`Login link: ${url}`);
+        //   return;
+        // } else {
           sendEmail({
             email: identifier,
             subject: `Magic Link`,
             react: LoginEmail({ magicLink: url, email: identifier }),
           });
-        }
+        
       },
     })
     /**
